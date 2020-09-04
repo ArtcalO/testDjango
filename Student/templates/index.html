@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Accueil{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.css" %}">
+</head>
+<body>
+
+{% block jumbotron %}
+
+<div class="jumbotron text-center mb-0">
+  <h1>Welcome to my first Django  Bootstrap Page</h1>
+  <p>CRUD Exemple in Django</p>
+</div>
+
+{% endblock %}
+
+{% block nav %}
+	
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+<a class="navbar-brand" href="#">ArtcalO</a>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'register' %}">Enregistrer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'addSchool' %}">Ajouter une Ecole</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'addClass' %}">Ajouter une Classe</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="{% url 'logout' %}">Déconnexion</a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}
+
+
+	 {% block content %}
+
+		<strong>{{ text }}</strong><br>
+		<strong>{{ text2 }}</strong><br>
+		<strong>{{ nummber }}</strong>
+		<a class="btn btn-primary" href="{% url 'register' %}">Enregistrer</a>
+		<a class="btn btn-primary" href="{% url 'addSchool' %}">Ajouter une Ecole</a>
+		<a class="btn btn-primary" href="{% url 'addClass' %}"  class="bhhbhb" >Ajouter une Classe</a>
+		<a class="btn btn-primary" href="{% url 'logout' %}"  class="bhhbhb" >Déconnexion</a>
+
+	{% endblock %}
+
+
+
+	{% block footer %}
+
+	<footer>
+			<div class="container-fluid mt-5 bg-dark p-5">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p class="text-info">&copy; The CrewZ 2020</p>
+					</div>
+				</div>
+			</div>
+	</footer>
+
+	{% endblock %}
+
+</body>
+</html>

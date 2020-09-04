@@ -1,0 +1,124 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Forms{% endblock %}
+
+
+{% block content %}
+	{% if register_form %}
+		
+		<section class="container-fluid mt-5">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-4 ">
+			<h3 class="card-title text-center mb-5 pb-2 bg-info">Register Form</h3>
+			<form action="{% url 'register' %}"  method="post" enctype="multipart/form-data" class="form-signin" >
+				
+                {% csrf_token %}
+                  
+                 {{register_form.as_p}}
+
+                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Enregistrer</button>
+                <a class="btn btn-lg btn-primary btn-block" href="{% url 'listeE' %}">Liste Eleve</a>
+
+          </form>
+		</section>
+	</section>
+</section>
+
+	{% endif %}
+
+	{% if school_form %}
+	
+		<form  class="form-control" method="POST" action="{% url 'addSchool' %}">
+			{% csrf_token %}
+			{{ school_form.as_p }}
+			<input class="btn btn-outline-success" type="submit" value="Enregister">
+			<a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+		</form>
+	{% endif %}
+
+	{% if classe_form %}
+
+		<form  class="form-control" method="POST" action="{% url 'addClass' %}">
+
+			{% csrf_token %}
+			{{ classe_form }}
+			<input class="btn btn-outline-success" type="submit" value="Enregister">
+			<a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+
+		</form>
+	{% endif %}
+
+	{% if modifier_form %}
+
+		<form  class="form-control" method="POST" action="{% url 'update' student.id %}" enctype="multipart/form-data">
+
+			{% csrf_token %}
+			{{ modifier_form.as_p }}
+			<input class="btn btn-outline-success" type="submit" value="Enregister">
+			<a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+
+		</form>
+		
+	{% endif %}
+
+	{% if profil_form %}
+
+	<section class="container-fluid mt-5">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-4 ">
+			<h3 class="card-title text-center mb-5 pb-2 bg-info">Register Form</h3>
+			<form method="post"  action="." class="form-signin" enctype="multipart/form-data" >
+				
+                {% csrf_token %}
+                  
+                 {{profil_form.as_p}}
+
+                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Enregistrer</button>
+                <a class="btn btn-lg btn-primary btn-block" href="{% url 'login' %}">Connexion</a>
+
+          </form>
+		</section>
+	</section>
+</section>
+		
+	{% endif %}
+
+	{% if connexion_form %}
+
+	<section class="container-fluid mt-5">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-4 ">
+			<h3 class="card-title text-center mb-5 pb-2 bg-info">Connexion Form</h3>
+			<form method="post"  action="." class="form-signin" >
+				
+                {% csrf_token %}
+                  
+                 {{connexion_form.as_p}}
+
+                <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Connexion</button>
+                <a class="btn btn-lg btn-primary btn-block" href="{% url 'registerP' %}">Register</a>
+
+          </form>
+		</section>
+	</section>
+</section>
+		
+	{% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

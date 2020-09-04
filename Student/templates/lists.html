@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% for student in students %}
+		<ul>
+			<li>Nom : {{ student.nom }} Prénom :  {{ student.prenom }} Age :  {{ student.age }} ans  {{ student.classe }}  <a href="{% url 'update' student.id %}">Modifier</a> <a href="{% url 'delete' student.id %}">Supprimer</a> </li>
+			<img width="500px" height="500px" src="{{ student.avatar.url }}">
+		</ul>
+	{% endfor %}
+
+	<button><a href="{% url 'home' %}">Home</a></button>
+</body>
+</html>
